@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-ex-forms',
@@ -32,11 +32,11 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ExFormsComponent {
 
-  wisky = new FormGroup({
-    brand: new FormControl('山崎'),
-    country: new FormControl(''),
-    price: new FormControl(0),
-    howToDrink: new FormControl([])
+  wisky = new UntypedFormGroup({
+    brand: new UntypedFormControl('山崎'),
+    country: new UntypedFormControl(''),
+    price: new UntypedFormControl(0),
+    howToDrink: new UntypedFormControl([])
   });
 
   countryOptions: CountryOptions[] = [
