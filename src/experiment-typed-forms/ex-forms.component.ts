@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {FormControl, FormGroup, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-ex-forms',
@@ -34,12 +34,12 @@ export class ExFormsComponent {
 
   wisky = new FormGroup({
     brand: new FormControl('山崎'),
-    country: new FormControl(''),
-    price: new FormControl(0),
-    howToDrink: new FormControl([])
+    country: new FormControl<string>('', { nonNullable: true }),
+    price: new FormControl(0, { nonNullable: true }),
+    howToDrink: new FormControl([''], { nonNullable: true }),
   });
 
-  countryOptions: CountryOptions[] = [
+  countryOptions: CountryOption[] = [
     {
       value: 'japanese',
       name: '日本',
@@ -66,25 +66,18 @@ export class ExFormsComponent {
       console.log(value);
     });
     this.wisky.controls['country'].valueChanges.subscribe(value => {
-      console.log(value.indexOf('t'));
+      console.log(value);
     });
     this.wisky.controls['price'].valueChanges.subscribe(value => {
-      console.log(value.indexOf('1'));
+      console.log(value.toFixed());
     });
     this.wisky.controls['howToDrink'].valueChanges.subscribe(values => {
       values.map(v => console.log(v));
     });
-    this.wisky.controls['unknown'].valueChanges.subscribe(value => {
-      console.log(value);
-    });
   }
 }
 
-type CountryOptions = {
+type CountryOption = {
   value: string,
   name: string,
 };
-
-
-
-      // (values as string[]).map(v => console.log(v));
