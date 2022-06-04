@@ -1,0 +1,15 @@
+.wisky-container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+form {
+  width: 70%;
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+input, select {
+  margin-bottom: 30px;
+}
